@@ -97,7 +97,7 @@ class AuthenticationState with ChangeNotifier {
   }
 
   currentUser() {
-    // notifyListeners();
+    notifyListeners();
     return getUser();
   }
 

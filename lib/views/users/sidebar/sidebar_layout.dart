@@ -1,8 +1,11 @@
 import 'package:after_layout/after_layout.dart';
 import 'package:flutter/material.dart';
+import 'package:logistics/services/utils.dart';
+import 'package:logistics/state/authState.dart';
 import 'package:logistics/views/riders/pedingOrdersDescription.dart';
 import 'package:logistics/views/users/completedOrders.dart';
 import 'package:logistics/views/users/profile..dart';
+import 'package:provider/provider.dart';
 
 import '../activeOrders.dart';
 import 'sidebar_item.dart';
@@ -86,9 +89,16 @@ class _SidebarLayoutState extends State<SidebarLayout> with AfterLayoutMixin {
               SizedBox(
                 height: 50,
               ),
-              Icon(
-                Icons.settings_applications,
-                color: Colors.white,
+              InkWell(
+                onTap: ()async{
+                  final _auth = Provider.of<AuthenticationState>(context, listen: false);
+                  await _auth.logout();
+                  gotoLoginScreen(context);
+                },
+                              child: Icon(
+                  Icons.settings_applications,
+                  color: Colors.white,
+                ),
               ),
               // SizedBox(
               //   height: 40,

@@ -14,7 +14,7 @@ description: A new Flutter project.
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ">=2.5.0 <3.0.0"
 
 dependencies:
   flutter:
@@ -34,7 +34,17 @@ dependencies:
   google_fonts: ^1.1.0
   clay_containers: ^0.2.2
   after_layout: ^1.0.7+2
-  
+  page_transition:
+  flutter_spinkit:
+  shared_preferences:
+  geolocator:
+  bot_toast:
+  progress_dialog:
+  timeago: ^2.0.26
+  flutter_staggered_grid_view:
+  flutter_google_places: ^0.2.5
+  geocoder: ^0.2.1
+  google_maps_webservice: ^0.0.16
 
   
 

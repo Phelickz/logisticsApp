@@ -6,6 +6,7 @@ import 'package:logistics/services/snackbarService.dart';
 import 'package:logistics/services/utils.dart';
 import 'package:logistics/state/authState.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'forgotPassword.dart';
 
@@ -48,10 +49,7 @@ class _LoginScreenState extends State<LoginScreen> {
           Container(
             width: _width,
             height: _height,
-            decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage('assets/images/SignUpImage.png'),
-                    fit: BoxFit.cover)),
+            color: Colors.black,
           ),
           _login()
         ],
@@ -247,7 +245,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                     .then((signInUser) async {
                                   final uid =
                                       await Provider.of<AuthenticationState>(
-                                              context, listen: false)
+                                              context,
+                                              listen: false)
                                           .currentUserId();
                                   var something = await Firestore.instance
                                       .collection('userData')
@@ -255,6 +254,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                       .get();
                                   DocumentSnapshot doc = something;
                                   if (doc['status'] == 'rider') {
+                                    var prefs =
+                                        await SharedPreferences.getInstance();
+                                    prefs.setString('status', doc['status']);
                                     gotoRiderHomeScreen(context);
                                   } else {
                                     gotoHomeScreen(context);

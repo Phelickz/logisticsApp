@@ -1,22 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:logistics/views/riders/ridersHome.dart';
-
-import 'screens/another.dart';
-import 'screens/home.dart';
-import 'views/users/userHome.dart';
+import 'package:logistics/screens/splashscreen.dart';
+import 'package:logistics/state/authState.dart';
+import 'package:provider/provider.dart';
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: Homepage()
+    return MultiProvider(
+      providers: [ChangeNotifierProvider(create: (_) => AuthenticationState())],
+      child: MaterialApp(
+          title: 'Logistics',
+          theme: ThemeData(
+            primarySwatch: Colors.blue,
+          ),
+          home: SplashScreen()),
     );
   }
 }
-

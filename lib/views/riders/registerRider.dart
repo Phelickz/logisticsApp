@@ -3,6 +3,7 @@ import 'package:logistics/services/snackbarService.dart';
 import 'package:logistics/services/utils.dart';
 import 'package:logistics/state/authState.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class RegisterRider extends StatefulWidget {
   @override
@@ -368,7 +369,7 @@ class _RegisterRiderState extends State<RegisterRider> {
                                         fontFamily: "WorkSansBold"),
                                   ),
                                 ),
-                                onPressed: () {
+                                onPressed: () async {
                                   final form = _formKey.currentState;
                                   form.save();
                                   if (form.validate()) {
@@ -390,6 +391,8 @@ class _RegisterRiderState extends State<RegisterRider> {
                                       print(e);
                                     }
                                   }
+                                  var prefs = await SharedPreferences.getInstance();
+                                  prefs.setString('status', 'rider');
                                 }
                                 // onPressed: () =>
                                 //     showInSnackBar("Login button pressed")),
