@@ -235,14 +235,9 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                           onPressed: () {
                             final form = _formKey.currentState;
-<<<<<<< HEAD
 
                             if (form.validate()) {
                               form.save();
-=======
-                            form.save();
-                            if (form.validate()) {
->>>>>>> 14843358b7457e360776e12ca4c1b057af38d84b
                               try {
                                 Provider.of<AuthenticationState>(_context,
                                         listen: false)
@@ -254,7 +249,6 @@ class _LoginScreenState extends State<LoginScreen> {
                                               context,
                                               listen: false)
                                           .currentUserId();
-<<<<<<< HEAD
                                   if (uid != null) {
                                     var something = await Firestore.instance
                                         .collection('userData')
@@ -271,20 +265,6 @@ class _LoginScreenState extends State<LoginScreen> {
                                     }
                                   }else{
                                     print('User is null');
-=======
-                                  var something = await Firestore.instance
-                                      .collection('userData')
-                                      .document(uid)
-                                      .get();
-                                  DocumentSnapshot doc = something;
-                                  if (doc['status'] == 'rider') {
-                                    var prefs =
-                                        await SharedPreferences.getInstance();
-                                    prefs.setString('status', doc['status']);
-                                    gotoRiderHomeScreen(context);
-                                  } else {
-                                    gotoHomeScreen(context);
->>>>>>> 14843358b7457e360776e12ca4c1b057af38d84b
                                   }
                                 });
                               } catch (e) {

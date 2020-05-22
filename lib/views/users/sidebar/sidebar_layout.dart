@@ -6,11 +6,7 @@ import 'package:logistics/views/riders/pedingOrdersDescription.dart';
 import 'package:logistics/views/users/completedOrders.dart';
 import 'package:logistics/views/users/profile..dart';
 import 'package:provider/provider.dart';
-<<<<<<< HEAD
 import 'package:logistics/screens/request.dart';
-=======
-
->>>>>>> 14843358b7457e360776e12ca4c1b057af38d84b
 import '../activeOrders.dart';
 import 'sidebar_item.dart';
 
@@ -135,11 +131,7 @@ class _SidebarLayoutState extends State<SidebarLayout> with AfterLayoutMixin {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-<<<<<<< HEAD
                                 builder: (context) => Request()));
-=======
-                                builder: (context) => ActiveOrders()));
->>>>>>> 14843358b7457e360776e12ca4c1b057af38d84b
                       },
                       isSelected: selectedIndex == 1,
                     ),

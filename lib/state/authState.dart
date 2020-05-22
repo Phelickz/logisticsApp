@@ -5,10 +5,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:logistics/services/auth.dart';
-<<<<<<< HEAD
 import 'package:logistics/services/firestore.dart';
-=======
->>>>>>> 14843358b7457e360776e12ca4c1b057af38d84b
 
 const String kAuthError = 'error';
 const String kAuthSuccess = 'success';
@@ -125,11 +122,8 @@ class AuthenticationState with ChangeNotifier {
     notifyListeners();
   }
 
-<<<<<<< HEAD
   loadRequestedOrders(String uid){
     return getOrdersListWithId(uid);
   }
 
-=======
->>>>>>> 14843358b7457e360776e12ca4c1b057af38d84b
 }
