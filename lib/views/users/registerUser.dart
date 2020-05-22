@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
 import 'package:logistics/screens/login.dart';
+=======
+>>>>>>> 14843358b7457e360776e12ca4c1b057af38d84b
 import 'package:logistics/services/snackbarService.dart';
 import 'package:logistics/services/utils.dart';
 import 'package:logistics/state/authState.dart';
@@ -323,7 +326,11 @@ class _RegisterUserState extends State<RegisterUser> {
                                         fontFamily: "WorkSansBold"),
                                   ),
                                 ),
+<<<<<<< HEAD
                                 onPressed: () async {
+=======
+                                onPressed: () async{
+>>>>>>> 14843358b7457e360776e12ca4c1b057af38d84b
                                   final form = _formKey.currentState;
                                   form.save();
                                   if (form.validate()) {
@@ -345,14 +352,19 @@ class _RegisterUserState extends State<RegisterUser> {
                                       print(e);
                                     }
                                   }
+<<<<<<< HEAD
                                   var prefs =
                                       await SharedPreferences.getInstance();
+=======
+                                   var prefs = await SharedPreferences.getInstance();
+>>>>>>> 14843358b7457e360776e12ca4c1b057af38d84b
                                   prefs.setString('status', 'user');
                                 }
                                 // onPressed: () =>
                                 //     showInSnackBar("Login button pressed")),
                                 ),
                           ),
+<<<<<<< HEAD
                           InkWell(
                             onTap: () {
                               Navigator.push(
@@ -365,6 +377,8 @@ class _RegisterUserState extends State<RegisterUser> {
                               child: Text('Already have an account? Login'),
                             ),
                           )
+=======
+>>>>>>> 14843358b7457e360776e12ca4c1b057af38d84b
                           // Padding(
                           //   padding: const EdgeInsets.only(top: 20.0),
                           //   child: Align(

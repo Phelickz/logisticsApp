@@ -4,7 +4,10 @@ import 'package:flutter_google_places/flutter_google_places.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_maps_webservice/places.dart';
 import 'package:geocoder/geocoder.dart';
+<<<<<<< HEAD
 import '../screens/payment.dart';
+=======
+>>>>>>> 14843358b7457e360776e12ca4c1b057af38d84b
 
 const kGoogleApiKey = "";
 
@@ -284,9 +287,13 @@ class _RequestState extends State<Request> {
                       Align(
                           alignment: Alignment.bottomCenter,
                           child: FloatingActionButton.extended(
+<<<<<<< HEAD
                               onPressed: () {
                                 Navigator.push(context, MaterialPageRoute(builder: (context) => CheckoutMethodCard()));
                               }, label: Text('Proceed to Pay')))
+=======
+                              onPressed: () {}, label: Text('Proceed to Pay')))
+>>>>>>> 14843358b7457e360776e12ca4c1b057af38d84b
                     ],
                   )),
             )
