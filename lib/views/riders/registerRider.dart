@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:logistics/services/snackbarService.dart';
 import 'package:logistics/services/utils.dart';
 import 'package:logistics/state/authState.dart';
@@ -61,7 +62,7 @@ class _RegisterRiderState extends State<RegisterRider> {
     return Container(
       width: double.infinity,
       height: MediaQuery.of(_context).size.height,
-      color: Colors.amber,
+      color: Colors.black,
       // decoration: BoxDecoration(
       //     image: DecorationImage(
       //         image: AssetImage('assets/images/SignUpImage.png'),
@@ -113,11 +114,11 @@ class _RegisterRiderState extends State<RegisterRider> {
                             alignment: Alignment.center,
                             child: Text(
                               'Create Your Account',
-                              style: TextStyle(
-                                  fontSize: 30,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: 'WorkSansBold'),
+                              style: GoogleFonts.aBeeZee(
+                                fontSize: 30,
+                                color: Colors.amber[900],
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
                           SizedBox(
@@ -363,10 +364,11 @@ class _RegisterRiderState extends State<RegisterRider> {
                                       vertical: 10.0, horizontal: 42.0),
                                   child: Text(
                                     "CREATE",
-                                    style: TextStyle(
-                                        color: Colors.red,
-                                        fontSize: 25.0,
-                                        fontFamily: "WorkSansBold"),
+                                    style: GoogleFonts.aBeeZee(
+                                      fontSize: 25,
+                                      color: Colors.amber[900],
+                                      fontWeight: FontWeight.bold,
+                                    ),
                                   ),
                                 ),
                                 onPressed: () async {
@@ -376,11 +378,12 @@ class _RegisterRiderState extends State<RegisterRider> {
                                     try {
                                       Provider.of<AuthenticationState>(context,
                                               listen: false)
-                                          .signup(
+                                          .signupRider(
                                               _emailController.text,
                                               _passwordController.text,
                                               _usernameController.text,
-                                              _phoneController.text)
+                                              _phoneController.text,
+                                              _idController.text)
                                           .then((signInUser) =>
                                               gotoRiderHomeScreen(context));
                                       // gotoHomeScreen(context);
@@ -391,7 +394,8 @@ class _RegisterRiderState extends State<RegisterRider> {
                                       print(e);
                                     }
                                   }
-                                  var prefs = await SharedPreferences.getInstance();
+                                  var prefs =
+                                      await SharedPreferences.getInstance();
                                   prefs.setString('status', 'rider');
                                 }
                                 // onPressed: () =>

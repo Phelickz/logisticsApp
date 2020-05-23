@@ -12,6 +12,7 @@ Color hexToColor(String code) {
 
 
 
+
 class CheckoutMethodCard extends StatefulWidget {
   @override
   _CheckoutMethodCardState createState() => _CheckoutMethodCardState();

@@ -50,51 +50,53 @@ class _MainWidgetState extends State<MainWidget> with TickerProviderStateMixin {
   }
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: KFDrawer(
+    return SafeArea(
+          child: Scaffold(
+        body: KFDrawer(
 //        borderRadius: 0.0,
 //        shadowBorderRadius: 0.0,
 //        menuPadding: EdgeInsets.all(0.0),
 //        scrollable: true,
-        controller: _drawerController,
-        header: Align(
-          alignment: Alignment.centerLeft,
-          child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 16.0),
-            width: MediaQuery.of(context).size.width * 0.6,
-            child: Text('Logistics', style: TextStyle(fontSize: 20),),
-            // child: Image.asset(
-            //   'assets/logo.png',
-            //   alignment: Alignment.centerLeft,
-            // ),
+          controller: _drawerController,
+          header: Align(
+            alignment: Alignment.centerLeft,
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 16.0),
+              width: MediaQuery.of(context).size.width * 0.6,
+              child: Text('Logistics', style: TextStyle(fontSize: 20),),
+              // child: Image.asset(
+              //   'assets/logo.png',
+              //   alignment: Alignment.centerLeft,
+              // ),
+            ),
           ),
-        ),
-        footer: KFDrawerItem(
-          text: Text(
-            'Profile',
-            style: TextStyle(color: Colors.white),
+          footer: KFDrawerItem(
+            text: Text(
+              'Profile',
+              style: TextStyle(color: Colors.white),
+            ),
+            icon: Icon(
+              Icons.input,
+              color: Colors.white,
+            ),
+            onPressed: () {
+              Navigator.of(context).push(CupertinoPageRoute(
+                fullscreenDialog: true,
+                builder: (BuildContext context) {
+                  return RidersProfile();
+                },
+              ));
+            },
           ),
-          icon: Icon(
-            Icons.input,
-            color: Colors.white,
-          ),
-          onPressed: () {
-            Navigator.of(context).push(CupertinoPageRoute(
-              fullscreenDialog: true,
-              builder: (BuildContext context) {
-                return RidersProfile();
-              },
-            ));
-          },
-        ),
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [Color(0xffc33764), Color(0xff1d2671)],
-            
-            // colors: [Color.fromRGBO(255, 255, 255, 1.0), Color.fromRGBO(44, 72, 171, 1.0)],
-            tileMode: TileMode.repeated,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [Color(0xff141e30), Color(0xff243b55)],
+              
+              // colors: [Color.fromRGBO(255, 255, 255, 1.0), Color.fromRGBO(44, 72, 171, 1.0)],
+              tileMode: TileMode.repeated,
+            ),
           ),
         ),
       ),

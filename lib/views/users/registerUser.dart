@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:logistics/screens/login.dart';
 import 'package:logistics/services/snackbarService.dart';
 import 'package:logistics/services/utils.dart';
@@ -60,7 +61,7 @@ class _RegisterUserState extends State<RegisterUser> {
     return Container(
       width: double.infinity,
       height: MediaQuery.of(_context).size.height,
-      color: Colors.amber,
+      color: Colors.black,
       // decoration: BoxDecoration(
       //     image: DecorationImage(
       //         image: AssetImage('assets/images/SignUpImage.png'),
@@ -112,11 +113,11 @@ class _RegisterUserState extends State<RegisterUser> {
                             alignment: Alignment.center,
                             child: Text(
                               'Create Your Account',
-                              style: TextStyle(
-                                  fontSize: 30,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: 'WorkSansBold'),
+                              style: GoogleFonts.aBeeZee(
+                                fontSize: 30,
+                                color: Colors.amber[900],
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
                           SizedBox(
@@ -317,10 +318,11 @@ class _RegisterUserState extends State<RegisterUser> {
                                       vertical: 10.0, horizontal: 42.0),
                                   child: Text(
                                     "CREATE",
-                                    style: TextStyle(
-                                        color: Colors.red,
-                                        fontSize: 25.0,
-                                        fontFamily: "WorkSansBold"),
+                                    style: GoogleFonts.aBeeZee(
+                                      fontSize: 25,
+                                      color: Colors.amber[900],
+                                      fontWeight: FontWeight.bold,
+                                    ),
                                   ),
                                 ),
                                 onPressed: () async {

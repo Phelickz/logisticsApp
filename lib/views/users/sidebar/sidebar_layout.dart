@@ -58,8 +58,8 @@ class _SidebarLayoutState extends State<SidebarLayout> with AfterLayoutMixin {
           right: 0,
           child: ClipPath(
             clipper: SidebarClipper(
-              (startYPosition == null) ? 0 : startYPosition - 40,
-              (startYPosition == null) ? 0 : startYPosition + 80,
+              (startYPosition == null) ? 0 : startYPosition - 80,
+              (startYPosition == null) ? 0 : startYPosition + 40,
             ),
             child: Container(
               decoration: BoxDecoration(

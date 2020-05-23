@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:logistics/screens/category.dart';
 import 'package:logistics/services/snackbarService.dart';
 import 'package:logistics/services/utils.dart';
@@ -83,11 +84,11 @@ class _LoginScreenState extends State<LoginScreen> {
                         alignment: Alignment.center,
                         child: Text(
                           'Hi There!',
-                          style: TextStyle(
-                              fontSize: 40,
-                              color: Colors.red,
-                              fontWeight: FontWeight.bold,
-                              fontFamily: 'WorkSansBold'),
+                          style: GoogleFonts.aBeeZee(
+                            fontSize: 40,
+                            color: Colors.amber[900],
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                       Padding(
@@ -195,7 +196,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(top: 8.0, left: 240),
+                        padding: const EdgeInsets.only(top: 8.0, left: 210),
                         child: GestureDetector(
                           onTap: () {
                             Navigator.push(
@@ -205,7 +206,11 @@ class _LoginScreenState extends State<LoginScreen> {
                           },
                           child: Text(
                             'Forgot Password?',
-                            style: TextStyle(fontSize: 16, color: Colors.white),
+                            style: GoogleFonts.aBeeZee(
+                                  fontSize: 16,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w300,
+                                  ),
                           ),
                         ),
                       ),
@@ -227,10 +232,11 @@ class _LoginScreenState extends State<LoginScreen> {
                                 vertical: 10.0, horizontal: 42.0),
                             child: Text(
                               "SIGN IN",
-                              style: TextStyle(
-                                  color: Colors.red,
-                                  fontSize: 25.0,
-                                  fontFamily: "WorkSansBold"),
+                              style: GoogleFonts.aBeeZee(
+                                fontSize: 25,
+                                color: Colors.amber[900],
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
                           onPressed: () {
@@ -263,7 +269,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     } else {
                                       gotoHomeScreen(context);
                                     }
-                                  }else{
+                                  } else {
                                     print('User is null');
                                   }
                                 });

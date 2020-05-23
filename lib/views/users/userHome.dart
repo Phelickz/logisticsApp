@@ -3,11 +3,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:logistics/screens/request.dart';
 import 'package:logistics/services/models.dart';
 import 'package:logistics/state/authState.dart';
 import 'package:provider/provider.dart';
-
+import 'package:timeago/timeago.dart' as timeago;
 import 'chart.dart';
 import 'sidebar/sidebar_layout.dart';
 
@@ -22,6 +23,7 @@ class _HomepageState extends State<Homepage> {
   final Firestore _firestore = Firestore.instance;
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   String username;
+  String name;
   void _openEndDrawer() {
     _scaffoldKey.currentState.openEndDrawer();
   }
@@ -36,6 +38,7 @@ class _HomepageState extends State<Homepage> {
     await FirebaseAuth.instance.currentUser().then((user) {
       setState(() {
         this.username = user.uid;
+        this.name = user.displayName;
       });
     });
   }
@@ -43,39 +46,276 @@ class _HomepageState extends State<Homepage> {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
 
     return Consumer<AuthenticationState>(
       builder: (context, authState, child) {
-        return Scaffold(
-          key: _scaffoldKey,
-          floatingActionButton: FloatingActionButton(
-              backgroundColor: Color(0xFFCF5CCF),
-              child: Icon(Icons.open_in_new),
-              onPressed: _openEndDrawer),
-          body: StreamBuilder(
-              stream: getUsersDataSnapshots(context),
-              builder: (context, snapshot) {
-                return snapshot.hasData
-                    ? snapshot.data.documents.isNotEmpty
-                        ? ListView.builder(
-                          itemCount: snapshot.data.documents.length,
-                          itemBuilder: (context, index){
-                            var item = snapshot.data.documents[index];
-                            return Card(
-                              child: Text(item['pickupAddress']),
-                            );
-                          },
-                        )
-                        : Center(
-                            child: Text(snapshot.data.documents.length.toString()),
-                          )
-                    : Center(child: CircularProgressIndicator());
-              }),
-          endDrawer: SidebarLayout(),
+        return SafeArea(
+          child: Scaffold(
+            appBar: AppBar(
+              leading: Container(),
+              elevation: 0,
+              title: Text(this.name, style: GoogleFonts.aBeeZee(
+                color: Colors.black,
+                fontWeight: FontWeight.w800,
+                fontSize: 20
+              ),),
+              centerTitle: true,
+              backgroundColor: Colors.blueGrey[800],
+            ),
+            backgroundColor: Colors.blueGrey[800],
+            key: _scaffoldKey,
+            floatingActionButton: FloatingActionButton(
+                backgroundColor: Color(0xFFCF5CCF),
+                child: Icon(Icons.open_in_new),
+                onPressed: _openEndDrawer),
+            body: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  // SizedBox(height: 10),
+                  // Padding(
+                  //   padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  //   child: Container(
+                  //       child: Text(
+                  //     'Hello, ' + this.name,
+                  //     style: GoogleFonts.aBeeZee(
+                  //         fontSize: 30, fontWeight: FontWeight.w800),
+                  //   )),
+                  // ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Container(
+                    margin: EdgeInsets.symmetric(horizontal: 8),
+                    width: width,
+                    height: height * 0.8,
+                    child: StreamBuilder(
+                        stream: getUsersDataSnapshots(context),
+                        builder: (context, snapshot) {
+                          return snapshot.hasData
+                              ? snapshot.data.documents.isNotEmpty
+                                  ? ListView.builder(
+                                      itemCount: snapshot.data.documents.length,
+                                      itemBuilder: (context, index) {
+                                        var item =
+                                            snapshot.data.documents[index];
+                                        return Container(
+                                          height: height * 0.27,
+                                          width: width * 0.98,
+                                          decoration: BoxDecoration(
+                                              // color: Colors.red,
+
+                                              borderRadius:
+                                                  BorderRadius.circular(20)),
+                                          child: Card(
+                                              elevation: 10,
+                                              shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          20)),
+                                              child: Container(
+                                                decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            20),
+                                                    // shape: BoxShape.circle,
+                                                    color: Colors.grey[200]),
+                                                child: Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: <Widget>[
+                                                    Container(
+                                                      height: 45,
+                                                      decoration: BoxDecoration(
+                                                          color:
+                                                              Colors.green[800],
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      10)),
+                                                      width: width * 0.98,
+                                                      child: Padding(
+                                                        padding:
+                                                            const EdgeInsets
+                                                                    .symmetric(
+                                                                horizontal:
+                                                                    8.0),
+                                                        child: Row(
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .spaceBetween,
+                                                          children: <Widget>[
+                                                            Text(
+                                                              '#' +
+                                                                  item['pickupPhone']
+                                                                      .toString(),
+                                                              style: GoogleFonts.aBeeZee(
+                                                                  fontSize: 20,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w800),
+                                                            ),
+                                                            Text(
+                                                              timeago
+                                                                  .format(item[
+                                                                          'timestamp']
+                                                                      .toDate())
+                                                                  .toString(),
+                                                              style: GoogleFonts.aBeeZee(
+                                                                  fontSize: 20,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w500),
+                                                            )
+                                                          ],
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    Padding(
+                                                      padding: const EdgeInsets
+                                                              .symmetric(
+                                                          horizontal: 8.0),
+                                                      child: Row(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceBetween,
+                                                        children: <Widget>[
+                                                          Padding(
+                                                            padding:
+                                                                const EdgeInsets
+                                                                        .symmetric(
+                                                                    vertical:
+                                                                        8.0),
+                                                            child: Column(
+                                                              crossAxisAlignment:
+                                                                  CrossAxisAlignment
+                                                                      .start,
+                                                              children: <
+                                                                  Widget>[
+                                                                Container(
+                                                                    height: 30,
+                                                                    width: 130,
+                                                                    decoration: BoxDecoration(
+                                                                        color: Colors.green[
+                                                                            200],
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(
+                                                                                10)),
+                                                                    child:
+                                                                        Center(
+                                                                      child: Text(
+                                                                          'Pickup adddress',
+                                                                          style: GoogleFonts.aBeeZee(
+                                                                              fontSize: 15,
+                                                                              fontWeight: FontWeight.bold)),
+                                                                    )),
+                                                                SizedBox(
+                                                                    height: 10),
+                                                                Text(
+                                                                  item[
+                                                                      'pickupAddress'],
+                                                                  style: GoogleFonts.aBeeZee(
+                                                                      fontSize:
+                                                                          20,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w500),
+                                                                ),
+                                                                SizedBox(
+                                                                    height: 30),
+                                                                Text(
+                                                                  'Status: ' +
+                                                                      item[
+                                                                          'status'],
+                                                                  style: GoogleFonts.aBeeZee(
+                                                                      fontSize:
+                                                                          20,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w500),
+                                                                )
+                                                              ],
+                                                            ),
+                                                          ),
+                                                          Column(
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                            children: <Widget>[
+                                                              Container(
+                                                                  height: 30,
+                                                                  width: 130,
+                                                                  decoration: BoxDecoration(
+                                                                      color: Colors
+                                                                              .green[
+                                                                          200],
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                              10)),
+                                                                  child: Center(
+                                                                    child: Text(
+                                                                        'Dropoff adddress',
+                                                                        style: GoogleFonts.aBeeZee(
+                                                                            fontSize:
+                                                                                15,
+                                                                            fontWeight:
+                                                                                FontWeight.bold)),
+                                                                  )),
+                                                              SizedBox(
+                                                                  height: 10),
+                                                              Text(
+                                                                item[
+                                                                    'deliveryAddress'],
+                                                                style: GoogleFonts.aBeeZee(
+                                                                    fontSize:
+                                                                        20,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w500),
+                                                              ),
+                                                              SizedBox(
+                                                                  height: 30),
+                                                              Text(
+                                                                'Receiver: ' +
+                                                                    item[
+                                                                        'deliveryFirstname'],
+                                                                style: GoogleFonts.aBeeZee(
+                                                                    fontSize:
+                                                                        20,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w500),
+                                                              )
+                                                            ],
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    )
+                                                  ],
+                                                ),
+                                              )),
+                                        );
+                                      },
+                                    )
+                                  : Center(
+                                      child: Text(snapshot.data.documents.length
+                                              .toString() +
+                                          ' new orders'),
+                                    )
+                              : Center(child: CircularProgressIndicator());
+                        }),
+                  ),
+                ],
+              ),
+            ),
+            endDrawer: SidebarLayout(),
+          ),
         );
       },
     );
   }
+
   Stream<QuerySnapshot> getUsersDataSnapshots(BuildContext context) async* {
     final uid = await Provider.of<AuthenticationState>(context, listen: false)
         .currentUserId();
@@ -83,8 +323,6 @@ class _HomepageState extends State<Homepage> {
         .collection('orders')
         .where('userID', isEqualTo: uid)
         .where('status', isEqualTo: 'requested')
-        
-       
         .snapshots();
   }
 }
