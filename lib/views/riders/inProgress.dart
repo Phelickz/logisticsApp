@@ -162,8 +162,8 @@ class _RidersProgressState extends State<RidersProgress> {
                                                         .spaceEvenly,
                                                 children: <Widget>[
                                                   _button(
-                                                      true, "Message", "btn1"),
-                                                  _button(false, "Call", "btn2")
+                                                      true, "Message", "btn1[$index]"),
+                                                  _button(false, "Call", "btn2[$index]")
                                                 ],
                                               ),
                                               SizedBox(height: 45),
@@ -202,8 +202,8 @@ class _RidersProgressState extends State<RidersProgress> {
                                                         .spaceEvenly,
                                                 children: <Widget>[
                                                   _button(
-                                                      true, "Message", "btn3"),
-                                                  _button(false, "Call", "btn4")
+                                                      true, "Message", "btn3[$index]"),
+                                                  _button(false, "Call", "btn4[$index]")
                                                 ],
                                               ),
                                               SizedBox(height: 40),

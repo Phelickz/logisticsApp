@@ -268,7 +268,7 @@ class _RidersHomeState extends State<RidersHome> {
                                                 width: width * 0.7,
                                                 child: FloatingActionButton
                                                     .extended(
-                                                        heroTag: 'btn1',
+                                                        heroTag: 'btn55'+index.toString(),
                                                         backgroundColor:
                                                             Colors.black,
                                                         icon: Icon(Icons.phone),
@@ -288,7 +288,7 @@ class _RidersHomeState extends State<RidersHome> {
                                                 width: width * 0.7,
                                                 child: FloatingActionButton
                                                     .extended(
-                                                        heroTag: 'btn2',
+                                                        heroTag: 'btn22'+index.toString(),
                                                         backgroundColor:
                                                             Colors.black,
                                                         icon: Icon(

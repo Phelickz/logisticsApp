@@ -2,10 +2,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kf_drawer/kf_drawer.dart';
+import 'package:logistics/services/utils.dart';
+import 'package:logistics/state/authState.dart';
 import 'package:logistics/views/riders/completed.dart';
 import 'package:logistics/views/riders/inProgress.dart';
 import 'package:logistics/views/riders/mainRider.dart';
 import 'package:logistics/views/riders/profile.dart';
+import 'package:provider/provider.dart';
 
 class MainWidget extends StatefulWidget {
   MainWidget({Key key, this.title}) : super(key: key);
@@ -50,6 +53,7 @@ class _MainWidgetState extends State<MainWidget> with TickerProviderStateMixin {
   }
   @override
   Widget build(BuildContext context) {
+    final _auth = Provider.of<AuthenticationState>(context);
     return SafeArea(
           child: Scaffold(
         body: KFDrawer(
@@ -79,13 +83,17 @@ class _MainWidgetState extends State<MainWidget> with TickerProviderStateMixin {
               Icons.input,
               color: Colors.white,
             ),
-            onPressed: () {
-              Navigator.of(context).push(CupertinoPageRoute(
-                fullscreenDialog: true,
-                builder: (BuildContext context) {
-                  return RidersProfile();
-                },
-              ));
+            // onPressed: () {
+            //   Navigator.of(context).push(CupertinoPageRoute(
+            //     fullscreenDialog: true,
+            //     builder: (BuildContext context) {
+            //       return RidersProfile();
+            //     },
+            //   ));
+            // },
+            onPressed: (){
+              _auth.logout();
+              gotoLoginScreen(context);
             },
           ),
           decoration: BoxDecoration(
