@@ -8,10 +8,12 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:logistics/services/animation/animations.dart';
 import 'package:logistics/services/colors.dart';
 import 'package:logistics/services/models.dart';
+import 'package:logistics/services/navigation/app_navigation/navigation.dart';
 import 'package:logistics/services/responsiveness/altres.dart';
 import 'package:logistics/services/responsiveness/responsiveness.dart';
 import 'package:logistics/state/authState.dart';
 import 'package:logistics/views/screens/request.dart';
+import 'package:logistics/views/users/addOrder.dart';
 import 'package:logistics/views/widgets/homecards.dart';
 import 'package:provider/provider.dart';
 import 'package:timeago/timeago.dart' as timeago;
@@ -154,6 +156,7 @@ class _HomepageState extends State<Homepage> {
                   HomeCards(
                     url: 'assets/images/truck.svg',
                     text: "Ship Now",
+                    onTap: () {Navigation().pushTo(context, AddOrder());}
                   ),
                   HomeCards(
                     url: 'assets/images/airplane (2).svg',
