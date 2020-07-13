@@ -8,8 +8,11 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:logistics/services/animation/animations.dart';
 import 'package:logistics/services/colors.dart';
 import 'package:logistics/services/models.dart';
+import 'package:logistics/services/responsiveness/altres.dart';
+import 'package:logistics/services/responsiveness/responsiveness.dart';
 import 'package:logistics/state/authState.dart';
 import 'package:logistics/views/screens/request.dart';
+import 'package:logistics/views/widgets/homecards.dart';
 import 'package:provider/provider.dart';
 import 'package:timeago/timeago.dart' as timeago;
 import 'chart.dart';
@@ -51,25 +54,124 @@ class _HomepageState extends State<Homepage> {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
-      endDrawer: FadeIn(delay: 0.5, child: SidebarLayout()),
-      appBar: AppBar(
-        leading: Icon(Icons.dashboard),
-        elevation: 0,
-        title: Text(
-          this.name ?? '',
-          style: GoogleFonts.aBeeZee(
-              color: Colors.white, fontWeight: FontWeight.w800, fontSize: 20),
-        ),
-        centerTitle: false,
-        backgroundColor: redColor,
-      ),
-      backgroundColor: Colors.white,
-      key: _scaffoldKey,
-      floatingActionButton: FloatingActionButton(
-          backgroundColor: Color(0xFFe74c3c),
-          child: Icon(Icons.add),
-          onPressed: () => Get.to(Request())),
-    );
+        endDrawer: FadeIn(delay: 0.5, child: SidebarLayout()),
+        // appBar: AppBar(
+        //   leading: Icon(Icons.dashboard),
+        //   elevation: 0,
+        //   title: Text(
+        //     this.name ?? '',
+        //     style: GoogleFonts.aBeeZee(
+        //         color: Colors.white, fontWeight: FontWeight.w800, fontSize: 20),
+        //   ),
+        //   centerTitle: false,
+        //   backgroundColor: redColor,
+        // ),
+        backgroundColor: Colors.white,
+        key: _scaffoldKey,
+        floatingActionButton: FloatingActionButton(
+            backgroundColor: Color(0xFFe74c3c),
+            child: Icon(Icons.add),
+            onPressed: () => Get.to(Request())),
+        body: Column(children: [
+          Container(
+            // color: Colors.amber,
+            width: width,
+            height: McGyver.rsDoubleH(context, 40),
+            child: Stack(children: [
+              Align(
+                alignment: Alignment.topCenter,
+                child: Container(
+                  decoration: BoxDecoration(
+                      image: DecorationImage(
+                          fit: BoxFit.cover,
+                          image: AssetImage('assets/images/L2.jpg'))),
+                ),
+              ),
+              Align(
+                alignment: Alignment.topCenter,
+                child: Opacity(
+                  opacity: 0.5,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [
+                          Color(0xFFe74c3c),
+                          Color(0xFFe74c3c),
+                          Color(0xFF000000),
+                          // Color(0xFFB6BAA6),
+                        ],
+                        // stops: [
+                        //   0.5,
+                        //   0.4,
+                        //   0.1,
+                        // ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Align(
+                alignment: Alignment.topCenter,
+                child: Container(
+                  width: width,
+                  height: McGyver.rsDoubleH(context, 10),
+                  child: AppBar(
+                    leading: Icon(Icons.dashboard),
+                    elevation: 0,
+                    backgroundColor: Colors.transparent,
+                    title: Text(
+                      'EML Logistics',
+                      style: GoogleFonts.aBeeZee(
+                          fontSize: SizeConfig().textSize(context, 3),
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ),
+              ),
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: Padding(
+                  padding: const EdgeInsets.only(bottom: 18.0),
+                  child: Text(
+                    'Hello, ${name ?? ''}',
+                    style: GoogleFonts.aBeeZee(
+                        color: Colors.white,
+                        fontSize: SizeConfig().textSize(context, 3)),
+                  ),
+                ),
+              )
+            ]),
+          ),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.only(top: 18.0),
+              child: Wrap(
+                spacing: McGyver.rsDoubleW(context, 10),
+                runSpacing: McGyver.rsDoubleW(context, 10),
+                children: [
+                  HomeCards(
+                    url: 'assets/images/truck.svg',
+                    text: "Ship Now",
+                  ),
+                  HomeCards(
+                    url: 'assets/images/airplane (2).svg',
+                    text: "Ship Now",
+                  ),
+                  HomeCards(
+                    url: 'assets/images/price.svg',
+                    text: "See Prices",
+                  ),
+                  HomeCards(
+                    url: 'assets/images/phone.svg',
+                    text: "Contact Us",
+                  )
+                ],
+              ),
+            ),
+          )
+        ]));
     // return Consumer<AuthenticationState>(
     //   builder: (context, authState, child) {
     //     return Scaffold(

@@ -54,6 +54,7 @@ dependencies:
   get:
   simple_animations:
   supercharged:
+  flutter_hooks:
   
 
 dev_dependencies:
