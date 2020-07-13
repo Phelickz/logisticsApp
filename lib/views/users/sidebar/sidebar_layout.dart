@@ -1,12 +1,14 @@
 import 'package:after_layout/after_layout.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:logistics/services/responsiveness/responsiveness.dart';
 import 'package:logistics/services/utils.dart';
 import 'package:logistics/state/authState.dart';
 import 'package:logistics/views/riders/pedingOrdersDescription.dart';
+import 'package:logistics/views/screens/request.dart';
 import 'package:logistics/views/users/completedOrders.dart';
 import 'package:logistics/views/users/profile..dart';
 import 'package:provider/provider.dart';
-import 'package:logistics/screens/request.dart';
 import '../activeOrders.dart';
 import 'sidebar_item.dart';
 
@@ -52,14 +54,14 @@ class _SidebarLayoutState extends State<SidebarLayout> with AfterLayoutMixin {
     return Stack(
       children: <Widget>[
         Positioned(
-          width: 90,
+          width: McGyver.rsDoubleW(context, 28),
           top: 0,
           bottom: 0,
           right: 0,
           child: ClipPath(
             clipper: SidebarClipper(
-              (startYPosition == null) ? 0 : startYPosition - 80,
-              (startYPosition == null) ? 0 : startYPosition + 40,
+              (startYPosition == null) ? 0 : startYPosition - 170,
+              (startYPosition == null) ? 0 : startYPosition - 20,
             ),
             child: Container(
               decoration: BoxDecoration(
@@ -67,27 +69,28 @@ class _SidebarLayoutState extends State<SidebarLayout> with AfterLayoutMixin {
                   begin: Alignment.topRight,
                   end: Alignment.bottomLeft,
                   colors: [
-                    Color(0xFFFF559F),
-                    Color(0xFFCF5CCF),
-                    Color(0xFFFF57AC),
-                    Color(0xFFFF6D91),
-                    Color(0xFFFF8D7E),
-                    Color(0xFFB6BAA6),
+                    Color(0xFF000000),
+                    Color(0xFFe74c3c),
+                    Color(0xFFe74c3c),
+                    // Color(0xFFFF57AC),
+                    // Color(0xFFFF6D91),
+                    // Color(0xFFFF8D7E),
+                    // Color(0xFFB6BAA6),
                   ],
-                  stops: [0.05, 0.3, 0.5, 0.55, 0.8, 1],
+                  stops: [0.05, 0.3, 0.5,],
                 ),
               ),
             ),
           ),
         ),
         Positioned(
-          right: -25,
+          right: -(McGyver.rsDoubleW(context, 6.4)),
           top: 0,
           bottom: 0,
           child: Column(
             children: [
               SizedBox(
-                height: 50,
+                height: McGyver.rsDoubleH(context, 6),
               ),
               InkWell(
                 onTap: ()async{
@@ -100,15 +103,8 @@ class _SidebarLayoutState extends State<SidebarLayout> with AfterLayoutMixin {
                   color: Colors.white,
                 ),
               ),
-              // SizedBox(
-              //   height: 40,
-              // ),
-              // Icon(
-              //   Icons.search,
-              //   color: Colors.white,
-              // ),
               SizedBox(
-                height: 120,
+                height: McGyver.rsDoubleH(context, 13),
               ),
               Expanded(
                 child: Column(
@@ -128,10 +124,7 @@ class _SidebarLayoutState extends State<SidebarLayout> with AfterLayoutMixin {
                       text: "Active",
                       onTabTap: () {
                         onTabTap(1);
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => Request()));
+                        Get.to(ActiveOrders());
                       },
                       isSelected: selectedIndex == 1,
                     ),
@@ -140,10 +133,7 @@ class _SidebarLayoutState extends State<SidebarLayout> with AfterLayoutMixin {
                       text: "Completed",
                       onTabTap: () {
                         onTabTap(2);
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => CompletedOrders()));
+                        Get.to(CompletedOrders());
                       },
                       isSelected: selectedIndex == 2,
                     ),
@@ -152,10 +142,7 @@ class _SidebarLayoutState extends State<SidebarLayout> with AfterLayoutMixin {
                       text: "Profile",
                       onTabTap: () {
                         onTabTap(3);
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => UserProfile()));
+                        Get.to(UserProfile());
                       },
                       isSelected: selectedIndex == 3,
                     ),
@@ -163,7 +150,7 @@ class _SidebarLayoutState extends State<SidebarLayout> with AfterLayoutMixin {
                 ),
               ),
               SizedBox(
-                height: 120,
+                height: McGyver.rsDoubleH(context, 10),
               ),
             ],
           ),
@@ -198,16 +185,16 @@ class SidebarClipper extends CustomClipper<Path> {
     path.quadraticBezierTo(width / 3, 5, width / 3, 70);
 
     //custom curve
-    path.lineTo(width / 3, startYPosition);
-    path.quadraticBezierTo(width / 3 - 2, startYPosition + 15, width / 3 - 10,
-        startYPosition + 25);
-    path.quadraticBezierTo(0, startYPosition + 45, 0, startYPosition + 60);
-    path.quadraticBezierTo(
-        0, endYPosition - 45, width / 3 - 10, endYPosition - 25);
-    path.quadraticBezierTo(
-        width / 3 - 2, endYPosition - 15, width / 3, endYPosition);
+    // path.lineTo(width / 3, startYPosition);
+    // path.quadraticBezierTo(width / 3 - 2, startYPosition + 15, width / 3 - 10,
+    //     startYPosition + 25);
+    // path.quadraticBezierTo(0, startYPosition + 55, 3, startYPosition + 60);
+    // path.quadraticBezierTo(
+    //     0, endYPosition - 65, width / 3 - 5, endYPosition - 25);
+    // path.quadraticBezierTo(
+    //     width / 3 - 2, endYPosition - 15, width / 3, endYPosition);
 
-    //down curve
+    // //down curve
     path.lineTo(width / 3, height - 70);
     path.quadraticBezierTo(width / 3, height - 5, width, height);
 

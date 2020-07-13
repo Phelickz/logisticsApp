@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:logistics/screens/payment.dart';
+
+import 'payment.dart';
 
 class Button extends StatelessWidget {
   final Widget child;

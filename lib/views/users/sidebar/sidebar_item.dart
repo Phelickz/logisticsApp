@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:logistics/services/responsiveness/altres.dart';
 
 import '../style.dart';
 
@@ -31,6 +33,9 @@ class SidebarItem extends StatelessWidget {
             AnimatedDefaultTextStyle(
               child: Text(
                 text,
+                style: GoogleFonts.aBeeZee(
+                  fontSize: SizeConfig().textSize(context, 3)
+                ),
               ),
               duration: const Duration(milliseconds: 200),
               style: isSelected ? selectedTabStyle : defaultTabStyle,

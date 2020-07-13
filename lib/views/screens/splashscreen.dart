@@ -3,12 +3,14 @@ import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:logistics/screens/category.dart';
 import 'package:logistics/views/riders/ridersHome.dart';
+import 'package:logistics/views/screens/onboarding.dart';
 import 'package:logistics/views/users/userHome.dart';
 import 'package:provider/provider.dart';
 import 'package:logistics/state/authstate.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import 'category.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -51,7 +53,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 else
                   {
                     Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => Category()))
+                            MaterialPageRoute(builder: (context) => Onboarding()))
                         .catchError((e) => print(e))
                   }
               })

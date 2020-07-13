@@ -2,13 +2,13 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:logistics/screens/category.dart';
 import 'package:logistics/services/snackbarService.dart';
 import 'package:logistics/services/utils.dart';
 import 'package:logistics/state/authState.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'category.dart';
 import 'forgotPassword.dart';
 
 class LoginScreen extends StatefulWidget {

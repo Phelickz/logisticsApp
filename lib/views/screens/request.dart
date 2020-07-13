@@ -4,6 +4,7 @@ import 'package:flutter_google_places/flutter_google_places.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_maps_webservice/places.dart';
 import 'package:geocoder/geocoder.dart';
+import 'package:logistics/services/colors.dart';
 import '../screens/payment.dart';
 
 const kGoogleApiKey = "";
@@ -284,6 +285,7 @@ class _RequestState extends State<Request> {
                       Align(
                           alignment: Alignment.bottomCenter,
                           child: FloatingActionButton.extended(
+                            backgroundColor: redColor,
                               onPressed: () {
                                 Navigator.push(context, MaterialPageRoute(builder: (context) => CheckoutMethodCard()));
                               }, label: Text('Proceed to Pay')))

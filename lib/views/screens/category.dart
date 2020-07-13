@@ -1,9 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:logistics/screens/login.dart';
 import 'package:logistics/views/riders/registerRider.dart';
 import 'package:logistics/views/users/registerUser.dart';
+
+import 'login.dart';
 
 class Category extends StatelessWidget {
   @override
