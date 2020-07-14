@@ -5,11 +5,14 @@ import 'package:logistics/services/responsiveness/responsiveness.dart';
 class RequestCards extends StatelessWidget {
   final String url;
   final GestureTapCallback onTap;
-  const RequestCards({Key key, this.url, this.onTap}) : super(key: key);
+  final Color color;
+  const RequestCards({Key key, this.url, this.onTap, this.color}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+      onTap: onTap,
           child: Card(
+            color: color,
         elevation: 3,
         child: Container(
           // color: Colors.red,
