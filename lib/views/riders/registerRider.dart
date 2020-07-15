@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:logistics/services/snackbarService.dart';
 import 'package:logistics/services/utils.dart';
@@ -374,6 +375,9 @@ class _RegisterRiderState extends State<RegisterRider> {
                                 onPressed: () async {
                                   final form = _formKey.currentState;
                                   form.save();
+                                  final state = Provider.of<AuthenticationState>(
+                                              context,
+                                              listen: false);
                                   if (form.validate()) {
                                     try {
                                       Provider.of<AuthenticationState>(context,
@@ -385,7 +389,7 @@ class _RegisterRiderState extends State<RegisterRider> {
                                               _phoneController.text,
                                               _idController.text)
                                           .then((signInUser) =>
-                                              gotoRiderHomeScreen(context));
+                                              gotoRiderHomeScreen(context, state));
                                       // gotoHomeScreen(context);
                                       // print('signed up');
                                       // Navigator.push(context,
@@ -462,8 +466,9 @@ class _RegisterRiderState extends State<RegisterRider> {
 
 class EmailValidator {
   static String validate(String value) {
-    if (value.isEmpty) {
-      return "Email cannot be empty";
+    bool isEmail = GetUtils.isEmail(value);
+    if(!isEmail){
+      return 'Please enter a valid email';
     }
     return null;
   }

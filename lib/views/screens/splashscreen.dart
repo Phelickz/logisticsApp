@@ -3,6 +3,11 @@ import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:logistics/services/colors.dart';
+import 'package:logistics/services/responsiveness/altres.dart';
+import 'package:logistics/services/responsiveness/responsiveness.dart';
 import 'package:logistics/views/riders/ridersHome.dart';
 import 'package:logistics/views/screens/onboarding.dart';
 import 'package:logistics/views/users/userHome.dart';
@@ -30,10 +35,11 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     _restorePersistedPreference();
-    Timer(Duration(seconds: 3), ()async {
-      await FirebaseAuth.instance.currentUser()
-      // Provider.of<AuthenticationState>(context, listen: false)
-      //     .currentUser()
+    Timer(Duration(seconds: 4), () async {
+      await FirebaseAuth.instance
+          .currentUser()
+          // Provider.of<AuthenticationState>(context, listen: false)
+          //     .currentUser()
           .then((currentUser) => {
                 if (currentUser != null)
                   {
@@ -52,8 +58,10 @@ class _SplashScreenState extends State<SplashScreen> {
                   }
                 else
                   {
-                    Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => Onboarding()))
+                    Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Onboarding()))
                         .catchError((e) => print(e))
                   }
               })
@@ -70,7 +78,7 @@ class _SplashScreenState extends State<SplashScreen> {
           Container(
             height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width,
-            color: Colors.red[900],
+            color: Colors.white,
           ),
           Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -81,28 +89,25 @@ class _SplashScreenState extends State<SplashScreen> {
                       child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      // CircleAvatar(
-                      //   radius: 40,
-                      //   backgroundColor: Colors.transparent,
-                      //   backgroundImage:
-                      //       AssetImage('assets/images/arqcoaster_2x.png'),
-                      // ),
-                      Padding(padding: EdgeInsets.only(top: 10.0)),
-                      Text(
-                        'SLIQUE',
-                        style: TextStyle(
-                            color: Colors.red,
-                            fontSize: 50.0,
-                            fontFamily: "WorkSansSemiBold"),
-                        textAlign: TextAlign.start,
-                      ) // or Alignment.topLeft
-                      // Text(
-                      //   'Slique',
-                      //   style: TextStyle(
-                      //       color: Colors.white,
-                      //       fontSize: 24.0,
-                      //       fontWeight: FontWeight.bold),
-                      // )
+                      Expanded(
+                        child: SvgPicture.asset(
+                          "assets/images/Logistic and Delivery.svg",
+                          width: McGyver.rsDoubleW(context, 30),
+                          height: McGyver.rsDoubleH(context, 45),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                            vertical: McGyver.rsDoubleH(context, 2)),
+                        child: Text(
+                          'EML Logistics',
+                          style: GoogleFonts.aBeeZee(
+                              color: redColor,
+                              fontWeight: FontWeight.bold,
+                              fontSize: SizeConfig().textSize(context, 4.6)),
+                          textAlign: TextAlign.start,
+                        ),
+                      )
                     ],
                   ))),
               Expanded(
@@ -110,17 +115,19 @@ class _SplashScreenState extends State<SplashScreen> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      SpinKitChasingDots(color: Colors.blue),
+                      SpinKitChasingDots(color: Colors.red, size: 30,),
                       // SpinKitPumpingHeart(color: Colors.red),
-                      Padding(padding: EdgeInsets.only(top: 20.0)),
+                      Padding(
+                          padding: EdgeInsets.only(
+                              top: McGyver.rsDoubleH(context, 4))),
 
-                      // Text(
-                      //   'Meet. Connect. \n          Love',
-                      //   style: TextStyle(
-                      //       color: Colors.white,
-                      //       fontSize: 18.0,
-                      //       fontWeight: FontWeight.bold),
-                      // )
+                      Text(
+                        'Delivery at your doorstep',
+                        style: TextStyle(
+                            color: redColor,
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.bold),
+                      )
                     ],
                   ))
             ],

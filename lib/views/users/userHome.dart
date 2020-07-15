@@ -12,6 +12,7 @@ import 'package:logistics/services/navigation/app_navigation/navigation.dart';
 import 'package:logistics/services/responsiveness/altres.dart';
 import 'package:logistics/services/responsiveness/responsiveness.dart';
 import 'package:logistics/state/authState.dart';
+import 'package:logistics/views/authScreen/welcome/welcome.dart';
 import 'package:logistics/views/screens/request.dart';
 import 'package:logistics/views/users/addOrder.dart';
 import 'package:logistics/views/widgets/homecards.dart';
@@ -57,18 +58,6 @@ class _HomepageState extends State<Homepage> {
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
         endDrawer: FadeIn(delay: 0.5, child: SidebarLayout()),
-        // appBar: AppBar(
-        //   leading: Icon(Icons.dashboard),
-        //   elevation: 0,
-        //   title: Text(
-        //     this.name ?? '',
-        //     style: GoogleFonts.aBeeZee(
-        //         color: Colors.white, fontWeight: FontWeight.w800, fontSize: 20),
-        //   ),
-        //   centerTitle: false,
-        //   backgroundColor: redColor,
-        // ),
-        backgroundColor: Colors.white,
         key: _scaffoldKey,
         floatingActionButton: FloatingActionButton(
             backgroundColor: Color(0xFFe74c3c),
@@ -154,14 +143,17 @@ class _HomepageState extends State<Homepage> {
                 runSpacing: McGyver.rsDoubleW(context, 10),
                 children: [
                   HomeCards(
-                    url: 'assets/images/truck.svg',
-                    text: "Ship Now",
-                    onTap: () {Navigation().pushTo(context, AddOrder());}
-                  ),
+                      url: 'assets/images/truck.svg',
+                      text: "Ship Now",
+                      onTap: () {
+                        Navigation().pushTo(context, AddOrder());
+                      }),
                   HomeCards(
-                    url: 'assets/images/airplane (2).svg',
-                    text: "Ship Now",
-                  ),
+                      url: 'assets/images/airplane (2).svg',
+                      text: "Ship Now",
+                      onTap: () {
+                        
+                      }),
                   HomeCards(
                     url: 'assets/images/price.svg',
                     text: "See Prices",

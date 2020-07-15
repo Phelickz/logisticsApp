@@ -1,42 +1,43 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
 
-class SnackBarService{
+class SnackBarService {
   BuildContext _buildContext;
 
   static SnackBarService instance = SnackBarService();
 
-  SnackBarService(){}
+  SnackBarService() {}
 
-  set buildContext(BuildContext _context){
+  set buildContext(BuildContext _context) {
     _buildContext = _context;
   }
 
-  void showSnackBarError(String _message){
-    Scaffold.of(_buildContext).showSnackBar(
-      SnackBar(
-        duration: Duration(seconds: 2),
-        content: Text(
-          _message, style: TextStyle(
-            color: Colors.white,
-            fontSize: 15
-          ),
-        ),
-        backgroundColor: Colors.red,
-      ));
+  void showSnackBarError(String _message) {
+    Get.snackbar(
+      'Error',
+      'Message',
+      duration: Duration(seconds: 3),
+      messageText: Text(
+        _message,
+        style: TextStyle(
+            color: Colors.white, fontSize: 15, fontWeight: FontWeight.bold),
+      ),
+      backgroundColor: Colors.red,
+    );
   }
 
-  void showSnackBarSuccess(String _message){
-    Scaffold.of(_buildContext).showSnackBar(
-      SnackBar(
-        duration: Duration(seconds: 2),
-        content: Text(
-          _message, style: TextStyle(
-            color: Colors.white,
-            fontSize: 15
-          ),
-        ),
-        backgroundColor: Colors.green,
-      ));
+  void showSnackBarSuccess(String _message) {
+    Get.snackbar(
+      'Success',
+      'Message',
+      duration: Duration(seconds: 2),
+      messageText: Text(
+        _message,
+        style: TextStyle(
+            color: Colors.white, fontSize: 15, fontWeight: FontWeight.bold),
+      ),
+      backgroundColor: Colors.green,
+    );
   }
 }

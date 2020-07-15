@@ -328,6 +328,9 @@ class _RegisterUserState extends State<RegisterUser> {
                                 onPressed: () async {
                                   final form = _formKey.currentState;
                                   form.save();
+                                  final state =
+                                      Provider.of<AuthenticationState>(context,
+                                          listen: false);
                                   if (form.validate()) {
                                     try {
                                       Provider.of<AuthenticationState>(context,
@@ -338,7 +341,7 @@ class _RegisterUserState extends State<RegisterUser> {
                                               _usernameController.text,
                                               _phoneController.text)
                                           .then((signInUser) =>
-                                              gotoHomeScreen(context));
+                                              gotoHomeScreen(context, state));
                                       // gotoHomeScreen(context);
                                       // print('signed up');
                                       // Navigator.push(context,

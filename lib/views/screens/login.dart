@@ -245,6 +245,9 @@ class _LoginScreenState extends State<LoginScreen> {
                             if (form.validate()) {
                               form.save();
                               try {
+                                final state = Provider.of<AuthenticationState>(
+                                              context,
+                                              listen: false);
                                 Provider.of<AuthenticationState>(_context,
                                         listen: false)
                                     .login(_emailController.text,
@@ -265,9 +268,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                       var prefs =
                                           await SharedPreferences.getInstance();
                                       prefs.setString('status', doc['status']);
-                                      gotoRiderHomeScreen(context);
+                                      gotoRiderHomeScreen(context, state);
                                     } else {
-                                      gotoHomeScreen(context);
+                                      gotoHomeScreen(context, state);
                                     }
                                   } else {
                                     print('User is null');

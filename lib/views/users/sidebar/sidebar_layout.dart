@@ -1,18 +1,22 @@
 import 'package:after_layout/after_layout.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:get/get.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:logistics/services/responsiveness/responsiveness.dart';
 import 'package:logistics/services/utils.dart';
 import 'package:logistics/state/authState.dart';
+import 'package:logistics/state/providers.dart';
 import 'package:logistics/views/riders/pedingOrdersDescription.dart';
 import 'package:logistics/views/screens/request.dart';
 import 'package:logistics/views/users/completedOrders.dart';
 import 'package:logistics/views/users/profile..dart';
-import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+//import 'package:provider/provider.dart';
 import '../activeOrders.dart';
 import 'sidebar_item.dart';
 
-class SidebarLayout extends StatefulWidget {
+class SidebarLayout extends StatefulHookWidget {
   @override
   _SidebarLayoutState createState() => _SidebarLayoutState();
 }
@@ -51,6 +55,7 @@ class _SidebarLayoutState extends State<SidebarLayout> with AfterLayoutMixin {
 
   @override
   Widget build(BuildContext context) {
+    final state = useProvider(auth);
     return Stack(
       children: <Widget>[
         Positioned(
@@ -77,7 +82,11 @@ class _SidebarLayoutState extends State<SidebarLayout> with AfterLayoutMixin {
                     // Color(0xFFFF8D7E),
                     // Color(0xFFB6BAA6),
                   ],
-                  stops: [0.05, 0.3, 0.5,],
+                  stops: [
+                    0.05,
+                    0.3,
+                    0.5,
+                  ],
                 ),
               ),
             ),
@@ -93,12 +102,16 @@ class _SidebarLayoutState extends State<SidebarLayout> with AfterLayoutMixin {
                 height: McGyver.rsDoubleH(context, 6),
               ),
               InkWell(
-                onTap: ()async{
-                  final _auth = Provider.of<AuthenticationState>(context, listen: false);
-                  await _auth.logout();
-                  gotoLoginScreen(context);
+                onTap: () async {
+                  Get.changeTheme(
+                      Get.isDarkMode ? ThemeData.light() : ThemeData.dark());
+                  final prefs = await SharedPreferences.getInstance();
+                  prefs.setBool('darktheme', Get.isDarkMode);
+                  print(Get.isDarkMode);
+                  // await state.logout();
+                  // gotoLoginScreen(context, state);
                 },
-                              child: Icon(
+                child: Icon(
                   Icons.settings_applications,
                   color: Colors.white,
                 ),

@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'package:logistics/state/authState.dart';
+import 'package:logistics/state/providers.dart';
+import 'package:logistics/views/authScreen/welcome/welcome.dart';
 import 'package:logistics/views/riders/ridersHome.dart';
 import 'package:logistics/views/screens/login.dart';
 import 'package:logistics/views/users/userHome.dart';
-import 'package:provider/provider.dart';
 
-void gotoHomeScreen(BuildContext context) {
+
+void gotoHomeScreen(BuildContext context, AuthenticationState state) {
+  
   //  print(user['kUID']);
   Future.microtask(() {
     // var user = Provider.of<AuthenticationState>(context, listen: false).exposeUser();
-    if (Provider.of<AuthenticationState>(context, listen: false).authStatus ==
+    if (state.authStatus ==
         kAuthSuccess) {
       // var user = Provider.of<AuthenticationState>(context, listen: false).exposeUser();
       Navigator.push(
@@ -19,11 +23,11 @@ void gotoHomeScreen(BuildContext context) {
   });
 }
 
-void gotoRiderHomeScreen(BuildContext context) {
+void gotoRiderHomeScreen(BuildContext context, AuthenticationState state) {
   //  print(user['kUID']);
   Future.microtask(() {
     // var user = Provider.of<AuthenticationState>(context, listen: false).exposeUser();
-    if (Provider.of<AuthenticationState>(context, listen: false).authStatus ==
+    if (state.authStatus ==
         kAuthSuccess) {
       // var user = Provider.of<AuthenticationState>(context, listen: false).exposeUser();
       Navigator.push(
@@ -32,12 +36,12 @@ void gotoRiderHomeScreen(BuildContext context) {
   });
 }
 
-void gotoLoginScreen(BuildContext context) {
+void gotoLoginScreen(BuildContext context, AuthenticationState state) {
   Future.microtask(() {
-    if (Provider.of<AuthenticationState>(context, listen: false).authStatus ==
+    if (state.authStatus ==
         null) {
       Navigator.push(
-          context, MaterialPageRoute(builder: (context) => LoginScreen()));
+          context, MaterialPageRoute(builder: (context) => WelcomeScreen()));
     }
   });
 }

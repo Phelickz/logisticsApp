@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:logistics/services/responsiveness/responsiveness.dart';
 
 
 import '../constants.dart';
@@ -15,7 +16,7 @@ class TextFieldContainer extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     return Container(
       margin: EdgeInsets.symmetric(vertical: 10),
-      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+      padding: EdgeInsets.symmetric(horizontal: 20, vertical: McGyver.rsDoubleW(context, 1.5)),
       width: size.width * 0.8,
       decoration: BoxDecoration(
         color: kPrimaryLightColor,

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:logistics/services/responsiveness/altres.dart';
 import 'package:logistics/views/authScreen/login/login.dart';
 import 'package:logistics/views/authScreen/signup/signup.dart';
 import 'package:logistics/views/authScreen/widgets/rounded_button.dart';
@@ -18,8 +20,10 @@ class Body extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              "WELCOME TO EDU",
-              style: TextStyle(fontWeight: FontWeight.bold),
+              "EML LOGISTICS",
+              style: GoogleFonts.aBeeZee(
+                  fontWeight: FontWeight.bold,
+                  fontSize: SizeConfig().textSize(context, 3)),
             ),
             SizedBox(height: size.height * 0.05),
             SvgPicture.asset(

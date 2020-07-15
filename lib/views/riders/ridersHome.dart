@@ -93,7 +93,7 @@ class _MainWidgetState extends State<MainWidget> with TickerProviderStateMixin {
             // },
             onPressed: (){
               _auth.logout();
-              gotoLoginScreen(context);
+              gotoLoginScreen(context, _auth);
             },
           ),
           decoration: BoxDecoration(

@@ -15,7 +15,7 @@ class _AddOrderState extends State<AddOrder> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      // backgroundColor: Colors.white,
       floatingActionButton: FloatingActionButton.extended(
         backgroundColor: redColor,
           icon: Icon(Icons.exit_to_app),
@@ -46,7 +46,7 @@ class _AddOrderState extends State<AddOrder> {
               Wrap(
                 children: [
                   RequestCards(
-                    color: color[0] ? redColor : Colors.white,
+                    color: color[0] ? redColor : null,
                     onTap: () {
                       // print(color[0]);
                       setState(() {
@@ -59,7 +59,7 @@ class _AddOrderState extends State<AddOrder> {
                     url: 'assets/images/truck.svg',
                   ),
                   RequestCards(
-                      color: color[1] ? redColor : Colors.white,
+                      color: color[1] ? redColor : null,
                       onTap: () {
                         // print(color[1]);
                         setState(() {
@@ -71,7 +71,7 @@ class _AddOrderState extends State<AddOrder> {
                       },
                       url: 'assets/images/airplane (2).svg'),
                   RequestCards(
-                    color: color[2] ? redColor : Colors.white,
+                    color: color[2] ? redColor : null,
                     onTap: () {
                       // print(color[2]);
                       setState(() {

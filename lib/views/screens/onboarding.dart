@@ -2,6 +2,7 @@ import 'package:fancy_on_boarding/fancy_on_boarding.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:logistics/views/authScreen/welcome/welcome.dart';
 import 'package:logistics/views/screens/button.dart';
 import 'package:logistics/views/screens/category.dart';
 import 'package:logistics/views/screens/login.dart';
@@ -84,9 +85,9 @@ class _OnboardingState extends State<Onboarding> {
         skipButtonText: "Skip",
         pageList: pageList,
         onDoneButtonPressed: () =>
-            Get.off(Category()),
+            Get.off(WelcomeScreen()),
         onSkipButtonPressed: () =>
-            Get.off(Category()),
+            Get.off(WelcomeScreen()),
       ),
     );
   }

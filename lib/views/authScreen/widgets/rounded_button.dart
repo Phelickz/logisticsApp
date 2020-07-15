@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-
+import 'package:google_fonts/google_fonts.dart';
+import 'package:logistics/services/responsiveness/altres.dart';
+import 'package:logistics/services/snackbarService.dart';
 
 import '../constants.dart';
 
@@ -17,6 +19,7 @@ class RoundedButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
     Size size = MediaQuery.of(context).size;
     return Container(
       margin: EdgeInsets.symmetric(vertical: 10),
@@ -29,7 +32,10 @@ class RoundedButton extends StatelessWidget {
           onPressed: press,
           child: Text(
             text,
-            style: TextStyle(color: textColor),
+            style: GoogleFonts.aBeeZee(
+                color: textColor,
+                fontWeight: FontWeight.bold,
+                fontSize: SizeConfig().textSize(context, 1.8)),
           ),
         ),
       ),
