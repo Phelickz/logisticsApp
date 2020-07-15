@@ -5,6 +5,9 @@ import 'package:logistics/services/responsiveness/responsiveness.dart';
 
 
 class ActiveCards extends StatelessWidget {
+  final bool completed;
+
+  const ActiveCards({Key key, this.completed = false}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -107,7 +110,10 @@ class ActiveCards extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
               child: Row(
                 children: [
-                  Container(
+                 completed ? Icon(
+                    Icons.check_circle,
+                    size: 43,
+                  ) : Container(
                     decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         border: Border.all(

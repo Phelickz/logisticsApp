@@ -103,13 +103,8 @@ class _SidebarLayoutState extends State<SidebarLayout> with AfterLayoutMixin {
               ),
               InkWell(
                 onTap: () async {
-                  Get.changeTheme(
-                      Get.isDarkMode ? ThemeData.light() : ThemeData.dark());
-                  final prefs = await SharedPreferences.getInstance();
-                  prefs.setBool('darktheme', Get.isDarkMode);
-                  print(Get.isDarkMode);
-                  // await state.logout();
-                  // gotoLoginScreen(context, state);
+                  await state.logout();
+                  gotoLoginScreen(context, state);
                 },
                 child: Icon(
                   Icons.settings_applications,

@@ -13,6 +13,7 @@ import 'package:logistics/services/responsiveness/altres.dart';
 import 'package:logistics/services/responsiveness/responsiveness.dart';
 import 'package:logistics/state/authState.dart';
 import 'package:logistics/views/authScreen/welcome/welcome.dart';
+import 'package:logistics/views/screens/prices.dart';
 import 'package:logistics/views/screens/request.dart';
 import 'package:logistics/views/users/addOrder.dart';
 import 'package:logistics/views/widgets/homecards.dart';
@@ -150,14 +151,12 @@ class _HomepageState extends State<Homepage> {
                       }),
                   HomeCards(
                       url: 'assets/images/airplane (2).svg',
-                      text: "Ship Now",
-                      onTap: () {
-                        
-                      }),
+                      text: "Fast Track",
+                      onTap: () {}),
                   HomeCards(
-                    url: 'assets/images/price.svg',
-                    text: "See Prices",
-                  ),
+                      url: 'assets/images/price.svg',
+                      text: "See Prices",
+                      onTap: () => Get.to(Prices())),
                   HomeCards(
                     url: 'assets/images/phone.svg',
                     text: "Contact Us",

@@ -33,15 +33,15 @@ class _CompletedOrdersState extends State<CompletedOrders> {
         children: [
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 10),
-            child: FadeIn(delay: 0.5, child: ActiveCards()),
+            child: FadeIn(delay: 0.5, child: ActiveCards(completed: true,)),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 10),
-            child: FadeIn(delay: 1.5, child: ActiveCards()),
+            child: FadeIn(delay: 1.5, child: ActiveCards(completed: true,)),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 10),
-            child: FadeIn(delay: 2.5, child: ActiveCards()),
+            child: FadeIn(delay: 2.5, child: ActiveCards(completed: true,)),
           ),
         ],
       ),

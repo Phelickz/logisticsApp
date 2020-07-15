@@ -35,7 +35,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     _restorePersistedPreference();
-    Timer(Duration(seconds: 4), () async {
+    Timer(Duration(seconds: 5), () async {
       await FirebaseAuth.instance
           .currentUser()
           // Provider.of<AuthenticationState>(context, listen: false)
