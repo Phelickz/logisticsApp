@@ -22,20 +22,20 @@ class ActiveOrders extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 10),
             child: FadeIn(
-              delay: 0.5,
-              child: ActiveCards()),
+              delay: 1,
+              child: ActiveCards(index: 1,)),
           ),
          Padding(
             padding: const EdgeInsets.symmetric(vertical: 10),
             child: FadeIn(
-              delay: 1.5,
-              child: ActiveCards()),
+              delay: 2,
+              child: ActiveCards(index: 2,)),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 10),
             child: FadeIn(
-              delay: 2.5,
-              child: ActiveCards()),
+              delay: 3,
+              child: ActiveCards(index: 3,)),
           ),
         ],
       ),

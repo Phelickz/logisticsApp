@@ -10,19 +10,20 @@ import 'package:device_preview/device_preview.dart';
 final pv = ChangeNotifierProvider((_) => AuthenticationState());
 
 void main() {runApp(
-    DevicePreview(
+   /* DevicePreview(
       enabled: !kReleaseMode,
-      builder: (context) => ProviderScope(child: MyApp()),
+      builder: (context) =>*/ ProviderScope(child: MyApp()),
   
-    )
+    // )
   );}
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      locale: DevicePreview.of(context).locale,
-      builder: DevicePreview.appBuilder,
+      debugShowCheckedModeBanner: false,
+      // locale: DevicePreview.of(context).locale,
+      // builder: DevicePreview.appBuilder,
         title: 'Logistics',
         theme: ThemeData(
           primarySwatch: Colors.blue,

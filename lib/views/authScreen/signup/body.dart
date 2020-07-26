@@ -20,6 +20,7 @@ import 'package:logistics/views/authScreen/widgets/rounded_button.dart';
 import 'package:logistics/views/authScreen/widgets/rounded_password.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../constants.dart';
 import 'background.dart';
 import 'div.dart';
 import 'socIcon.dart';
@@ -31,6 +32,8 @@ class Body extends StatefulHookWidget {
 
 class _BodyState extends State<Body> {
   final _formKey = GlobalKey<FormState>();
+
+  bool obscure = true;
   @override
   Widget build(BuildContext context) {
     final emailController = useTextEditingController();
@@ -47,10 +50,10 @@ class _BodyState extends State<Body> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               SizedBox(height: size.height * 0.03),
-              Text("SIGNUP",
-                  style: GoogleFonts.aBeeZee(
-                      fontWeight: FontWeight.bold,
-                      fontSize: SizeConfig().textSize(context, 4))),
+              // Text("SIGNUP",
+              //     style: GoogleFonts.aBeeZee(
+              //         fontWeight: FontWeight.bold,
+              //         fontSize: SizeConfig().textSize(context, 4))),
               SizedBox(height: size.height * 0.03),
               SvgPicture.asset(
                 "assets/images/signup.svg",
@@ -79,6 +82,18 @@ class _BodyState extends State<Body> {
               RoundedPasswordField(
                 controller: passwordController,
                 onChanged: (value) {},
+                 obscure: obscure,
+                suffixIcon: IconButton(
+                  icon: obscure
+                      ? Icon(Icons.visibility_off)
+                      : Icon(Icons.visibility),
+                  onPressed: () {
+                    setState(() {
+                      obscure = !obscure;
+                    });
+                  },
+                  color: kPrimaryColor,
+                ),
               ),
               state.state == AuthState.Busy
                   ? SpinKitThreeBounce(
@@ -118,7 +133,8 @@ class _BodyState extends State<Body> {
                     press: () {},
                   ),
                 ],
-              )
+              ),
+              SizedBox(height: SizeConfig().yMargin(context, 4))
             ],
           ),
         ),

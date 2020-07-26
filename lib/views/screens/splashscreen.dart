@@ -45,20 +45,20 @@ class _SplashScreenState extends State<SplashScreen> {
                   {
                     if (_status == 'rider')
                       {
-                        Navigator.push(
+                        Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
                                 builder: (context) => MainWidget()))
                       }
                     else
                       {
-                        Navigator.push(context,
+                        Navigator.pushReplacement(context,
                             MaterialPageRoute(builder: (context) => Homepage()))
                       }
                   }
                 else
                   {
-                    Navigator.push(
+                    Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
                                 builder: (context) => Onboarding()))
@@ -78,7 +78,34 @@ class _SplashScreenState extends State<SplashScreen> {
           Container(
             height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width,
-            color: Colors.white,
+            decoration: BoxDecoration(
+                image: DecorationImage(
+                    fit: BoxFit.cover,
+                    image: AssetImage('assets/images/L2.jpg'))),
+          ),
+          Opacity(
+            opacity: 0.5,
+            child: Container(
+              height: MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.width,
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [
+                          Color(0xFFe74c3c),
+                          Color(0xFFe74c3c),
+                          Color(0xFF000000),
+                          // Color(0xFFB6BAA6),
+                        ],
+                        // stops: [
+                        //   0.5,
+                        //   0.4,
+                        //   0.1,
+                        // ],
+                      ),
+              ),
+            ),
           ),
           Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -89,20 +116,21 @@ class _SplashScreenState extends State<SplashScreen> {
                       child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Expanded(
-                        child: SvgPicture.asset(
-                          "assets/images/Logistic and Delivery.svg",
-                          width: McGyver.rsDoubleW(context, 30),
-                          height: McGyver.rsDoubleH(context, 45),
-                        ),
-                      ),
+                      // Expanded(
+                      //   child: Image.asset('assets/images/L2.jpg'),
+                      //   // child: SvgPicture.asset(
+                      //   //   "assets/images/Logistic and Delivery.svg",
+                      //   //   width: McGyver.rsDoubleW(context, 30),
+                      //   //   height: McGyver.rsDoubleH(context, 45),
+                      //   // ),
+                      // ),
                       Padding(
                         padding: EdgeInsets.symmetric(
                             vertical: McGyver.rsDoubleH(context, 2)),
                         child: Text(
                           'EML Logistics',
                           style: GoogleFonts.aBeeZee(
-                              color: redColor,
+                              color: Colors.white,
                               fontWeight: FontWeight.bold,
                               fontSize: SizeConfig().textSize(context, 4.6)),
                           textAlign: TextAlign.start,
@@ -115,7 +143,10 @@ class _SplashScreenState extends State<SplashScreen> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      SpinKitChasingDots(color: Colors.red, size: 30,),
+                      SpinKitThreeBounce(
+                        color: Colors.black,
+                        size: 15,
+                      ),
                       // SpinKitPumpingHeart(color: Colors.red),
                       Padding(
                           padding: EdgeInsets.only(
@@ -124,7 +155,7 @@ class _SplashScreenState extends State<SplashScreen> {
                       Text(
                         'Delivery at your doorstep',
                         style: TextStyle(
-                            color: redColor,
+                            color: Colors.white54,
                             fontSize: 18.0,
                             fontWeight: FontWeight.bold),
                       )

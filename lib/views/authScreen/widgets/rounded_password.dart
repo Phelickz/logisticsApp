@@ -9,17 +9,21 @@ import 'text_field.dart';
 class RoundedPasswordField extends StatelessWidget {
   final ValueChanged<String> onChanged;
   final TextEditingController controller;
-  const RoundedPasswordField({
+  final Widget suffixIcon;
+  final bool obscure;
+  RoundedPasswordField({
     Key key,
-    this.onChanged, this.controller,
+    this.onChanged, this.controller, this.suffixIcon, this.obscure,
   }) : super(key: key);
+
+  
 
   @override
   Widget build(BuildContext context) {
     return TextFieldContainer(
       child: TextFormField(
         validator: PasswordValidator.validate,
-        obscureText: true,
+        obscureText: obscure,
         controller: controller,
         onChanged: onChanged,
         cursorColor: kPrimaryColor,
@@ -29,10 +33,7 @@ class RoundedPasswordField extends StatelessWidget {
             Icons.lock,
             color: kPrimaryColor,
           ),
-          suffixIcon: Icon(
-            Icons.visibility,
-            color: kPrimaryColor,
-          ),
+          suffixIcon: suffixIcon,
           border: InputBorder.none,
         ),
       ),

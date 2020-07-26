@@ -6,8 +6,9 @@ import 'package:logistics/services/responsiveness/responsiveness.dart';
 
 class ActiveCards extends StatelessWidget {
   final bool completed;
+  final int index;
 
-  const ActiveCards({Key key, this.completed = false}) : super(key: key);
+  const ActiveCards({Key key, this.completed = false, this.index}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -31,7 +32,7 @@ class ActiveCards extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.only(left: 8.0),
                       child: Text(
-                        'Parcel 1',
+                        'Parcel $index',
                         style: GoogleFonts.aBeeZee(
                             fontSize: SizeConfig().textSize(context, 3),
                             fontWeight: FontWeight.bold),

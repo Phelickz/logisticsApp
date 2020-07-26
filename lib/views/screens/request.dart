@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:google_maps_webservice/places.dart';
 import 'package:geocoder/geocoder.dart';
 import 'package:logistics/services/colors.dart';
+import 'package:logistics/services/responsiveness/altres.dart';
 import '../screens/payment.dart';
 
 const kGoogleApiKey = "";
@@ -50,19 +51,20 @@ class _RequestState extends State<Request> {
     return Scaffold(
       key: homeScaffoldKey,
       appBar: AppBar(
+        
         leading: IconButton(
             icon: Icon(
               Icons.arrow_back,
-              color: Colors.black,
+              color: Colors.white,
             ),
             onPressed: () {
               Navigator.pop(context);
             }),
-        backgroundColor: Colors.white,
+        backgroundColor: redColor,
         title: Text(
           'Create a Delivery Task',
           style: GoogleFonts.aBeeZee(
-              fontSize: 23, color: Colors.black, fontWeight: FontWeight.bold),
+              fontSize: SizeConfig().textSize(context, 3), color: Colors.white, fontWeight: FontWeight.bold),
         ),
       ),
       body: SingleChildScrollView(
@@ -106,7 +108,7 @@ class _RequestState extends State<Request> {
                                     Text(
                                       'Pick Up Details',
                                       style: GoogleFonts.aBeeZee(
-                                          fontSize: 22,
+                                          fontSize: SizeConfig().textSize(context, 3),
                                           fontWeight: FontWeight.bold),
                                     ),
                                   ],
@@ -210,7 +212,7 @@ class _RequestState extends State<Request> {
                                     Text(
                                       'Delivery Details',
                                       style: GoogleFonts.aBeeZee(
-                                          fontSize: 22,
+                                          fontSize: SizeConfig().textSize(context, 3),
                                           fontWeight: FontWeight.bold),
                                     ),
                                   ],

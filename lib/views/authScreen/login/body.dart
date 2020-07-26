@@ -25,6 +25,7 @@ import 'package:logistics/views/screens/forgotPassword.dart';
 import 'package:logistics/views/users/userHome.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../constants.dart';
 import 'background.dart';
 
 class Body extends StatefulHookWidget {
@@ -37,6 +38,7 @@ class Body extends StatefulHookWidget {
 }
 
 class _BodyState extends State<Body> {
+  bool obscure = true;
   final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -51,10 +53,10 @@ class _BodyState extends State<Body> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Text("LOGIN",
-                  style: GoogleFonts.aBeeZee(
-                      fontWeight: FontWeight.bold,
-                      fontSize: SizeConfig().textSize(context, 3))),
+              // Text("LOGIN",
+              //     style: GoogleFonts.aBeeZee(
+              //         fontWeight: FontWeight.bold,
+              //         fontSize: SizeConfig().textSize(context, 3))),
               SizedBox(height: size.height * 0.03),
               SvgPicture.asset(
                 "assets/images/login.svg",
@@ -70,6 +72,18 @@ class _BodyState extends State<Body> {
               RoundedPasswordField(
                 controller: passwordController,
                 onChanged: (value) {},
+                obscure: obscure,
+                suffixIcon: IconButton(
+                  icon: obscure
+                      ? Icon(Icons.visibility_off)
+                      : Icon(Icons.visibility),
+                  onPressed: () {
+                    setState(() {
+                      obscure = !obscure;
+                    });
+                  },
+                  color: kPrimaryColor,
+                ),
               ),
               state.state == AuthState.Busy
                   ? SpinKitThreeBounce(
@@ -106,6 +120,7 @@ class _BodyState extends State<Body> {
                   );
                 },
               ),
+              SizedBox(height: SizeConfig().yMargin(context, 3))
             ],
           ),
         ),

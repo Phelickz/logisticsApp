@@ -9,6 +9,7 @@ import 'package:logistics/services/responsiveness/responsiveness.dart';
 import 'package:logistics/services/snackbarService.dart';
 import 'package:logistics/state/authState.dart';
 import 'package:logistics/state/providers.dart';
+import 'package:logistics/views/authScreen/constants.dart';
 import 'package:logistics/views/authScreen/login/background.dart';
 import 'package:logistics/views/authScreen/widgets/input_field.dart';
 import 'package:provider/provider.dart';
@@ -39,7 +40,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
             Text("Forgot Password ?",
                 style: GoogleFonts.aBeeZee(
                     fontWeight: FontWeight.bold,
-                    fontSize: SizeConfig().textSize(context, 4))),
+                    fontSize: SizeConfig().textSize(context, 3))),
             SizedBox(height: McGyver.rsDoubleH(context, 4)),
             Container(
               child: SvgPicture.asset(
@@ -66,10 +67,10 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                       style: TextStyle(
                           fontFamily: "WorkSansSemiBold",
                           fontSize: 20,
-                          fontWeight: FontWeight.bold),
+                          fontWeight: FontWeight.w400),
                     ),
                   )),
-                  SizedBox(height: McGyver.rsDoubleH(context, 8)),
+                  SizedBox(height: McGyver.rsDoubleH(context, 3)),
                   Align(
                     alignment: Alignment.center,
                     child: RoundedInputField(
@@ -88,20 +89,20 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                           EdgeInsets.only(right: McGyver.rsDoubleW(context, 2)),
                       child: Container(
                         height: McGyver.rsDoubleH(context, 8),
-                        width: McGyver.rsDoubleW(context, 40),
+                        width: McGyver.rsDoubleW(context, 35),
                         color: Colors.transparent,
                         child: RaisedButton(
-                            elevation: 10,
+                            elevation: 2,
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(20)),
                             child: Text(
                               'Submit',
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
-                                  fontSize: SizeConfig().textSize(context, 3.4),
-                                  color: Colors.black),
+                                  fontSize: SizeConfig().textSize(context, 3),
+                                  color: Colors.white),
                             ),
-                            color: redColor,
+                            color: kPrimaryColor,
                             onPressed: () {
                               final form = formKey.currentState;
                               form.save();

@@ -18,7 +18,7 @@ class SocalIcon extends StatelessWidget {
       onTap: press,
       child: Container(
         margin: EdgeInsets.symmetric(horizontal: 10),
-        padding: EdgeInsets.all(20),
+        padding: EdgeInsets.all(16),
         decoration: BoxDecoration(
           border: Border.all(
             width: 2,
@@ -28,8 +28,8 @@ class SocalIcon extends StatelessWidget {
         ),
         child: SvgPicture.asset(
           iconSrc,
-          height: 20,
-          width: 20,
+          height: 12,
+          width: 12,
         ),
       ),
     );
